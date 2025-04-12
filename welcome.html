@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Kuromi's World</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Using Kawaii-style fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles */
+        .font-kawaii {
+            font-family: 'Pacifico', cursive;
+        }
+        .font-main {
+            font-family: 'Quicksand', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #2a0845 0%, #6441A5 100%);
+            background-attachment: fixed;
+        }
+        .kuromi-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30S46.569 60 30 60 0 46.569 0 30 13.431 0 30 0zm0 10c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        /* Custom button animation */
+        .btn-explore {
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            background: linear-gradient(45deg, #ff66c4, #9933ff);
+        }
+        .btn-explore:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 182, 255, 0.4);
+            background: linear-gradient(45deg, #ff33cc, #cc33ff);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        /* Glow effect for text */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 182, 255, 0.8),
+                         0 0 20px rgba(255, 182, 255, 0.5),
+                         0 0 30px rgba(255, 182, 255, 0.3);
+        }
+        /* Custom animations for decorative elements */
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        /* Kuromi decorative elements */
+        .kuromi-decoration::before,
+        .kuromi-decoration::after {
+            content: '♥';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 102, 196, 0.3);
+        }
+        .kuromi-decoration::before {
+            left: 20%;
+            animation: float 4s ease-in-out infinite;
+        }
+        .kuromi-decoration::after {
+            right: 20%;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Main container with pattern background -->
+    <div class="kuromi-pattern min-h-screen relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="kuromi-decoration absolute inset-0"></div>
+        
+        <!-- Content container -->
+        <div class="relative min-h-screen flex flex-col items-center justify-center px-4 text-center z-10">
+            <!-- Main heading -->
+            <h1 class="font-kawaii text-6xl md:text-7xl lg:text-8xl mb-6 text-pink-200 text-glow">
+                Welcome to<br>Kuromi's World
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="font-main text-xl md:text-2xl text-white mb-12 max-w-2xl">
+                Step into a world of kawaii magic and endless adventures!
+            </p>
+            
+            <!-- Animated button -->
+            <button class="btn-explore font-main inline-flex items-center px-8 py-4 text-xl text-white rounded-full font-semibold tracking-wide shadow-lg">
+                <span>Start Exploring</span>
+                <i class="fas fa-star ml-2 sparkle"></i>
+            </button>
+            
+            <!-- Decorative elements -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-6">
+                <i class="fas fa-heart text-pink-400 text-3xl sparkle"></i>
+                <i class="fas fa-star text-purple-400 text-3xl sparkle" style="animation-delay: 0.3s"></i>
+                <i class="fas fa-heart text-pink-400 text-3xl sparkle" style="animation-delay: 0.6s"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
