@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuromi's Gallery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .font-kawaii {
+            font-family: 'Pacifico', cursive;
+        }
+        .font-main {
+            font-family: 'Quicksand', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #2a0845 0%, #6441A5 100%);
+            background-attachment: fixed;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            animation: scaleIn 0.3s ease;
+        }
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        .lightbox-nav:hover {
+            color: #ff66c4;
+            transform: translateY(-50%) scale(1.2);
+        }
+        .lightbox-prev { left: 1rem; }
+        .lightbox-next { right: 1rem; }
+        .lightbox-close {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lightbox-close:hover {
+            color: #ff66c4;
+            transform: rotate(90deg);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-main text-white">
+    <div class="min-h-screen py-12 px-4">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="font-kawaii text-5xl md:text-6xl text-pink-200 mb-4">
+                Kuromi's Gallery
+            </h1>
+            <p class="text-lg md:text-xl text-purple-200">Explore the magical world of Kuromi!</p>
+        </header>
+
+        <!-- Gallery Grid -->
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gallery Items -->
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="0">
+                <img src="images/A.jpg" alt="Kuromi A" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="1">
+                <img src="images/B.jpg" alt="Kuromi B" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="2">
+                <img src="images/C.jpg" alt="Kuromi C" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="3">
+                <img src="images/D.jpg" alt="Kuromi D" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="4">
+                <img src="images/E.jpg" alt="Kuromi E" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="5">
+                <img src="images/F.jpg" alt="Kuromi F" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="6">
+                <img src="images/G.jpg" alt="Kuromi G" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="7">
+                <img src="images/H.jpg" alt="Kuromi H" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="8">
+                <img src="images/I.jpg" alt="Kuromi I" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="9">
+                <img src="images/J.jpg" alt="Kuromi J" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="10">
+                <img src="images/K.jpg" alt="Kuromi K" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="11">
+                <img src="images/L.jpg" alt="Kuromi L" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="12">
+                <img src="images/M.jpg" alt="Kuromi M" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="13">
+                <img src="images/N.jpg" alt="Kuromi N" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="14">
+                <img src="images/O.jpg" alt="Kuromi O" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="15">
+                <img src="images/P.jpg" alt="Kuromi P" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="16">
+                <img src="images/Q.jpg" alt="Kuromi Q" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="17">
+                <img src="images/R.jpg" alt="Kuromi R" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="18">
+                <img src="images/S.jpg" alt="Kuromi S" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="19">
+                <img src="images/T.jpg" alt="Kuromi T" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="20">
+                <img src="images/U.jpg" alt="Kuromi U" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="21">
+                <img src="images/V.jpg" alt="Kuromi V" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="22">
+                <img src="images/W.jpg" alt="Kuromi W" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="23">
+                <img src="images/X.jpg" alt="Kuromi X" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="24">
+                <img src="images/Y.jpg" alt="Kuromi Y" class="w-full h-64 object-cover">
+            </div>
+            <div class="gallery-item rounded-lg overflow-hidden cursor-pointer" data-index="25">
+                <img src="images/Z.jpg" alt="Kuromi Z" class="w-full h-64 object-cover">
+            </div>
+        </div>
+
+        <!-- Back to Welcome Page -->
+        <div class="text-center mt-12">
+            <a href="welcome.html" class="inline-flex items-center px-6 py-3 bg-pink-500 hover:bg-pink-600 rounded-full transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Welcome Page
+            </a>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="Lightbox Image" class="max-w-full max-h-[80vh]">
+        </div>
+        <div class="lightbox-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-nav lightbox-prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="lightbox-nav lightbox-next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <!-- JavaScript for Lightbox -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const images = Array.from(galleryItems).map(item => 
+                item.querySelector('img').src
+            );
+            let currentIndex = 0;
+
+            // Open lightbox
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateLightboxImage();
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // Close lightbox
+            lightbox.querySelector('.lightbox-close').addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            // Navigate through images
+            lightbox.querySelector('.lightbox-prev').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateLightboxImage();
+            });
+
+            lightbox.querySelector('.lightbox-next').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateLightboxImage();
+            });
+
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+
+            // Update lightbox image
+            function updateLightboxImage() {
+                lightboxImg.src = images[currentIndex];
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateLightboxImage();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateLightboxImage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
